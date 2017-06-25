@@ -112,7 +112,7 @@ final class NSECRecordCodec extends DnsRecordCodec<NextSecureRecord> {
         // NSEC records MUST not use name compression, so ...
         NameCodec actualNames = NameCodecFeature.MDNS_UTF_8.isImplementedBy(names)
                 ? NameCodec.get(MDNS_UTF_8, WRITE_TRAILING_DOT)
-                : names.supportsUnicode() ? NameCodec.nonCompressingNameCodec().toPunycodeNameCodec() 
+                : names.supportsUnicode() ? NameCodec.nonCompressingNameCodec().toPunycodeNameCodec()
                 : NameCodec.nonCompressingNameCodec();
         actualNames.writeName(value.nextRecord, into);
         int lastBlock = -1;
