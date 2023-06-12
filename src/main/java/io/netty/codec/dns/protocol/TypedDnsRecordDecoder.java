@@ -73,7 +73,12 @@ public final class TypedDnsRecordDecoder extends DefaultDnsRecordDecoder {
         if (codec.type() != ByteBuf.class) {
             return createRecord(codec, name, type, dnsClass, timeToLive, in, length, names);
         }
-        return super.decodeRecord(name, type, dnsClass, timeToLive, in, length, names);
+        int pos = in.readerIndex();
+        try {
+            return super.decodeRecord(name, type, dnsClass, timeToLive, in, length, names);
+        } finally {
+            in.readerIndex(pos + length);
+        }
     }
 
     private <T> TypedDnsRecord<T> createRecordWithFactoryCodec(RecordFactoryCodec<T> codec, CharSequence name,
