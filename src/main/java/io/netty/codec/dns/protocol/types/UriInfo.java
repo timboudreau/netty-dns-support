@@ -40,10 +40,10 @@ public final class UriInfo {
             throw new IllegalArgumentException("URI must be <= 255 characters");
         }
         if (weight > 65535) {
-            throw new IllegalArgumentException("Weight must be a positive integer 0-65535 but got " + priority);
+            throw new IllegalArgumentException("Weight must be a positive integer 0-65535 but got " + weight);
         }
-        if (weight > 65535) {
-            throw new IllegalArgumentException("Weight must be a positive integer 0-65535 but got " + priority);
+        if (priority > 65535) {
+            throw new IllegalArgumentException("Priority must be a positive integer 0-65535 but got " + priority);
         }
     }
 
